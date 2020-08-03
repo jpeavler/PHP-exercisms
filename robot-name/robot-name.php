@@ -1,7 +1,7 @@
 <?php
 
 class Robot {
-    private $name;
+    private $name = "";
     private $usedNames = [];
     private $ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private function generateName(): string {
@@ -13,16 +13,16 @@ class Robot {
             $num2 = rand(0,9);
             $num3 = rand(0,9);
             $genName = $letter1.$letter2.$num1.$num2.$num3;
-        } while(!in_array($genName, $this->usedNames));
-        array_push($usedNames, $genName);
+        } while(in_array($genName, $this->usedNames));
+        array_push($this->usedNames, $genName);
         return $genName;
     }
     function __construct() {
-        $name = $this->generateName();
+        $this->name = $this->generateName();
     }
 
     public function setName() {
-        $this->name = generateName();
+        $this->name = $this->generateName();
     }
     public function getName() {
         return $this->name;
