@@ -60,16 +60,4 @@ class RobotTest extends PHPUnit\Framework\TestCase
             $this->robot->reset();
         }
     }
-
-    // This test is optional.
-    public function testNameUniquenessManyRobots() : void
-    {
-        $names = [];
-
-        for ($i = 0; $i < 10000; $i++) {
-            $name = (new Robot())->getName();
-            $this->assertArrayNotHasKey($name, $names, sprintf('Name %s reissued after %d robots', $name, $i));
-            $names[$name] = true;
-        }
-    }
 }
